@@ -10,5 +10,5 @@ bin/beast --conf spark.executor.memory=16g --conf spark.driver.memory=16g --clas
 #---task#3 scripts---
 
 #---task#4 scripts---
-
+spark-submit --class edu.ucr.cs.cs167.group24.ArrestPrediction --master "local[*]" target/amoha120_lab10-1.0-SNAPSHOT.jar
 
