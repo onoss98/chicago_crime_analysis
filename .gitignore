@@ -1,0 +1,6 @@
+*.gz
+target/
+bin/
+lib/
+spark-warehouse
+.idea/
