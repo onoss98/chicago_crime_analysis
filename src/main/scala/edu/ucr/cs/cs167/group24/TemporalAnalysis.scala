@@ -14,10 +14,8 @@ object TemporalAnalysis {
       System.exit(1)
     }
 
-    // initializing Spark
     val conf = new SparkConf().setAppName("CS167 Project: Task 3")
 
-    // set Spark master to local
     if (!conf.contains("spark.master")) conf.setMaster("local[*]")
 
     val sparkSession = SparkSession.builder.config(conf).getOrCreate
