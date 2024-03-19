@@ -2,12 +2,12 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
-  <groupId>edu.ucr.cs.cs167.onoss001</groupId>
-  <artifactId>onoss001_finalproject</artifactId>
+  <groupId>edu.ucr.cs.cs167.group24</groupId>
+  <artifactId>Project24</artifactId>
   <version>1.0-SNAPSHOT</version>
   <packaging>jar</packaging>
 
-  <name>onoss001_finalproject</name>
+  <name>Project24</name>
   <url>http://www.myorganization.org</url>
 
   <properties>
@@ -69,7 +69,7 @@
           <archive>
             <manifest>
               <addClasspath>true</addClasspath>
-              <mainClass>edu.ucr.cs.cs167.onoss001.BeastScala</mainClass>
+              <mainClass>edu.ucr.cs.cs167.group24.SpatialAnalysis</mainClass>
             </manifest>
           </archive>
         </configuration>
@@ -113,5 +113,3 @@
     </profile>
   </profiles>
 </project>
-
-
