@@ -28,9 +28,10 @@
   - NetID: jpare033
   - Email: jpare033@ucr.edu
   - Task description:
-    - .
-    - .
-    - .
+    - Count the number of crimes for each crime type, given start and end dates
+    - Load the dataset created from task 1 (i.e. 10k) as an argument to aggregate the number of crimes for each type
+    - Generate a CSV file that contains the results (i.e. number of crimes for each crime type)
+    - Load the CSV file into a spreadsheet program to create desired bar chart
 
 - **Task 4: James Glassford:**
   - SID:
