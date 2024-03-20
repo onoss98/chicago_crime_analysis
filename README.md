@@ -34,10 +34,11 @@
     - Load the CSV file into a spreadsheet program to create desired bar chart
 
 - **Task 4: James Glassford:**
-  - SID:
-  - NetID:
-  - Email: @ucr.edu
+  - SID: 862379637
+  - NetID: aglas012
+  - Email: aglas012@ucr.edu
   - Task description:
-    - .
-    - .
-    - .
+    - Utilize machine learning to attempt to predict arrests
+    - Prune the larger dataset using SQL query to only take the data we need
+    - Instantiate and run the machine learning pipeline on the data
+    - analyze and display the results of the prediction
