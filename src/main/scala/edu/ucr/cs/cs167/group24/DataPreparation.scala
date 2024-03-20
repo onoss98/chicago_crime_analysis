@@ -24,8 +24,10 @@ object DataPreparation {
     SparkSQLRegistration.registerUDT
     SparkSQLRegistration.registerUDF(sparkSession = spark)
     val sparkContext = spark.sparkContext
+
     val inputfile: String = args(0)
     val outputFile: String = "Chicago_Crimes_ZIP"
+
     try {
       import edu.ucr.cs.bdlab.beast._
 

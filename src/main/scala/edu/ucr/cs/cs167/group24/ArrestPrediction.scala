@@ -7,13 +7,18 @@ import org.apache.spark.ml.feature.{HashingTF, StringIndexer, Tokenizer}
 import org.apache.spark.ml.param.ParamMap
 import org.apache.spark.ml.tuning.{ParamGridBuilder, TrainValidationSplit, TrainValidationSplitModel}
 import org.apache.spark.ml.{Pipeline, PipelineModel}
+import org.apache.spark.mllib.evaluation.MulticlassMetrics
 import org.apache.spark.sql.{DataFrame, Dataset, Row, SparkSession}
 import org.apache.spark.sql.functions._
 
 
 object ArrestPrediction {
 
-  def main(args : Array[String]) {
+  def main(args : Array[String]): Unit = {
+    if (args.length != 1) {
+      System.err.println("Arguments must be 2! (i.e. start date, end date)")
+      System.exit(1)
+    }
     val conf = new SparkConf
     if (!conf.contains("spark.master"))
       conf.setMaster("local[*]")
@@ -25,8 +30,11 @@ object ArrestPrediction {
       .config(conf)
       .getOrCreate()
     val t1 = System.nanoTime
+
+    val inputFile: String = args(0)
+
     try {
-      val rawData: DataFrame = spark.read.parquet("Chicago_Crimes_ZIP.parquet")
+      val rawData: DataFrame = spark.read.parquet(inputFile)
       val arrestsDF: DataFrame = rawData.filter(rawData("Arrest").isin("true", "false"))
       val tokenizer = new Tokenizer().setInputCol("PrimaryType").setInputCol("Description").setOutputCol("words")
       val hashingTF = new HashingTF().setInputCol("words").setOutputCol("features")
@@ -63,7 +71,13 @@ object ArrestPrediction {
       val binaryClassificationEvaluator = new BinaryClassificationEvaluator()
         .setLabelCol("label")
         .setRawPredictionCol("prediction")
+
       val accuracy: Double = binaryClassificationEvaluator.evaluate(predictions)
+      val metrics = binaryClassificationEvaluator.getMetrics(predictions)
+      val precision = metrics.precisionByThreshold()
+      precision.foreach({case (t,p) => println(s"Threshold: $t, Precision: $p")})
+      val recall = metrics.recallByThreshold()
+      recall.foreach({case (t,r) => println(s"Threshold: $t, Recall: $r")})
       println(s"Accuracy of the test set is $accuracy")
       println(s"numFeatures: $numFeatures\nfitIntercept: $fitIntercept\nregParam: $regParam\nmaxIter: $maxIter\n" +
         s"threshold: $threshold\ntol: $tol")

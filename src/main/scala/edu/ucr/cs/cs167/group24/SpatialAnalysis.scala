@@ -6,7 +6,10 @@ import org.apache.spark.sql.{DataFrame, SaveMode, SparkSession}
 
 object SpatialAnalysis {
   def main(args: Array[String]): Unit = {
-
+    if (args.length != 1) {
+      System.err.println("Arguments must be 1! (i.e. parquet file)")
+      System.exit(1)
+    }
     val conf = new SparkConf().setAppName("Project A - Task 2")
 
     if (!conf.contains("spark.master"))
@@ -19,7 +22,8 @@ object SpatialAnalysis {
     SparkSQLRegistration.registerUDT
     SparkSQLRegistration.registerUDF(sparkSession)
 
-    val inputFile: String = "Chicago_Crimes_ZIP"
+    //val inputFile: String = "Chicago_Crimes_ZIP"
+    val inputFile: String = args(0)
     val outputFile: String = "ZIPCodeCrimeCount"
     import edu.ucr.cs.bdlab.beast._
 
