@@ -19,7 +19,7 @@
   - Email: amoha120@ucr.edu
   - Task description:
     - Run group aggregate queries to computes the total number of crimes per ZIP Code
-    - Load ZIP Code gemoetries and merge it with the previous query output
+    - Load ZIP Code geometries and merge it with the previous query output
     - Generate a Shapefile for the query described above.
     - Import the generated shapefile into QGIS and plot a choropleth map
 
