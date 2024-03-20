@@ -34,10 +34,11 @@
     - Load the CSV file into a spreadsheet program to create desired bar chart
 
 - **Task 4: James Glassford:**
-  - SID:
-  - NetID:
-  - Email: @ucr.edu
-  - Task description:
-    - .
-    - .
-    - .
+  - SID: 862379637
+  - NetID: aglas012
+  - Email: aglas012@ucr.edu
+  - Task description: 
+    - Utilize a predictive model to try and determine whether or not future calls will result in an arrest
+    - Prune the data to remove any arrest data that is inconclusive (not true or false)
+    - Feed the data to the predictive model and make the prediction based on sentiment analysis
+      
